@@ -2,7 +2,14 @@
 set -ex
 
 function install_swift () {
-    brew install swift;
+    sudo apt-get install clang
+    sudo apt-get install libcurl3 libpython2.7 libpython2.7-dev
+
+    wget https://swift.org/builds/swift-5.1.3-release/ubuntu1804/swift-5.1.3-RELEASE/swift-5.1.3-RELEASE-ubuntu18.04.tar.gz
+    tar xzf swift-5.1.3-RELEASE-ubuntu18.04.tar.gz
+    sudo mv swift-5.1.3-RELEASE-ubuntu18.04 /usr/share/swift
+    export PATH=/usr/share/swift/usr/bin:$PATH
+    swift --version
 }
 
 if ! [ -x "$(command -v swift)" ] 
